@@ -1,3 +1,8 @@
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+logger.info("Starting Plant Care RAG Chatbot...")
+
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
