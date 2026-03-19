@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: plant-care-rag-chatbot
+    env: python
+    buildCommand: |
+      pip install -r requirements.txt
+      python scripts/build_index.py
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+      - key: TEMPERATURE
+        value: "0.3"
+      - key: PDF_DIR
+        value: pdfs
+      - key: VECTORSTORE_DIR
+        value: vectorstore
+      - key: LOG_LEVEL
+        value: INFO
+    disk:
+      name: vectorstore-data
+      mountPath: /app/vectorstore
+      sizeGB: 1
