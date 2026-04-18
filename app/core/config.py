@@ -12,7 +12,8 @@ class Settings(BaseSettings):
     GROQ_MODEL: str = "llama-3.3-70b-versatile"
 
     # Embeddings — multilingual model for cross-lingual support
-    EMBEDDING_MODEL: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    # AFTER (~170MB vs ~350MB, still covers Urdu+English well)
+    EMBEDDING_MODEL: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L6-v2"
 
     # Paths
     PDF_DIR: str = "pdfs"
