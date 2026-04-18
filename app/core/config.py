@@ -13,7 +13,7 @@ class Settings(BaseSettings):
 
     # Embeddings — multilingual model for cross-lingual support
     # AFTER (~170MB vs ~350MB, still covers Urdu+English well)
-    EMBEDDING_MODEL: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L6-v2"
+    EMBEDDING_MODEL: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 
     # Paths
     PDF_DIR: str = "pdfs"
