@@ -19,13 +19,11 @@ logger = get_logger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Pre-load retriever on startup so first request isn't slow
-    logger.info("Pre-loading retriever on startup...")
-    get_retriever()
-    logger.info("Retriever ready.")
+    logger.info("Plant Care RAG Chatbot starting...")
+    # Don't pre-load — let retriever initialize on first request
+    # This keeps startup RAM under the 512MB ceiling
     yield
     logger.info("Shutting down.")
-
 
 app = FastAPI(
     title=settings.APP_TITLE,
